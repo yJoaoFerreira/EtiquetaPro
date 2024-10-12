@@ -8,17 +8,34 @@
 # 10. Imprimir o PDF enviado: Realiza a impressão do PDF através do programa.
 
 
-# Importa a biblioteca Pandas:
+import tkinter as tk
+from tkinter import filedialog
 import pandas as pd
 
-# Checa a versão instalada da biblioteca Pandas:
 pd.__version__
 
-# Obter o diretório de um arquivo Excel:
-diretorio = input('Digite o diretório do Excel: ')
+def selecionar_arquivo():
+    arquivo_excel = filedialog.askopenfilename(
+        title="Selecione um arquivo Excel",
+        filetypes=[("Excel files", "*.xlsx *.xls")]
+    )
 
-# Ler um arquivo Excel:
-pd.read_excel(diretorio)
+    if arquivo_excel:
+        try:
+            df = pd.read_excel(arquivo_excel)
+            print("Script executado com sucesso!")
+            print(df.head())
+        except Exception as e:
+            print(f"Ocorreu um erro ao tentar ler o arquivo: {e}")
+    else:
+        print("Nenhum arquivo foi selecionado")
 
-# Caso seja executado sem erro:
-print("Script executado com sucesso!")
+root = tk.Tk()
+root.title("EtiquetaPro")
+
+root.geometry("300x150")
+
+botao = tk.Button(root, text="Selecionar Arquivo Excel", command=selecionar_arquivo)
+botao.pack(pady=20)
+
+root.mainloop()
