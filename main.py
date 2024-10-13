@@ -15,6 +15,7 @@ import pandas as pd
 pd.__version__
 
 def selecionar_arquivo():
+    # Abre a caixa de diálogo para escolher um arquivo
     arquivo_excel = filedialog.askopenfilename(
         title="Selecione um arquivo Excel",
         filetypes=[("Excel files", "*.xlsx *.xls")]
@@ -22,6 +23,10 @@ def selecionar_arquivo():
 
     if arquivo_excel:
         try:
+            # Exibe o diretório do arquivo selecionado no terminal
+            print(f"Arquivo selecionado: {arquivo_excel}")
+
+            # Lê o arquivo Excel
             df = pd.read_excel(arquivo_excel)
             print("Script executado com sucesso!")
             print(df.head())
@@ -30,12 +35,16 @@ def selecionar_arquivo():
     else:
         print("Nenhum arquivo foi selecionado")
 
+# Criando a janela principal do Tkinter
 root = tk.Tk()
 root.title("EtiquetaPro")
 
+# Tamanho da janela
 root.geometry("300x150")
 
+# Botão para selecionar o arquivo
 botao = tk.Button(root, text="Selecionar Arquivo Excel", command=selecionar_arquivo)
 botao.pack(pady=20)
 
+# Rodando a interface
 root.mainloop()
