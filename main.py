@@ -23,24 +23,28 @@ def selecionar_arquivo():
 
     if arquivo_excel:
         try:
-            # Exibe o diretório do arquivo selecionado no terminal
-            print(f"Arquivo selecionado: {arquivo_excel}")
+            # Atualiza o Label com o diretório do arquivo selecionado
+            label_diretorio.config(text=f"Diretório: {arquivo_excel}")
 
             # Lê o arquivo Excel
             df = pd.read_excel(arquivo_excel)
-            print("Script executado com sucesso!")
+            print("Script executado com sucesso.")
             print(df.head())
         except Exception as e:
-            print(f"Ocorreu um erro ao tentar ler o arquivo: {e}")
+            print(f"Ocorreu um erro ao tentar ler o arquivo do diretório: {e}")
     else:
-        print("Nenhum arquivo foi selecionado")
+        label_diretorio.config(text="Nenhum arquivo foi selecionado.")
 
 # Criando a janela principal do Tkinter
 root = tk.Tk()
 root.title("EtiquetaPro")
 
 # Tamanho da janela
-root.geometry("300x150")
+root.geometry("450x300")
+
+# Label para exibir o diretório do arquivo selecionado
+label_diretorio = tk.Label(root, text="Nenhum arquivo selecionado.")
+label_diretorio.pack(pady=10)
 
 # Botão para selecionar o arquivo
 botao = tk.Button(root, text="Selecionar Arquivo Excel", command=selecionar_arquivo)

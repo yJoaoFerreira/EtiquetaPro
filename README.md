@@ -19,8 +19,8 @@
 
 ## Tecnologias Utilizadas (WIP)
 
-- **Python**: Linguagem de programação principal. (check)
-- **pandas**: Para leitura e manipulação de arquivos Excel. (check)
+- **Python**: Linguagem de programação principal.
+- **pandas**: Para leitura e manipulação de arquivos Excel.
 - **pySerial**: Para comunicação com a impressora via porta serial.
 - **Tkinter**: Para a interface gráfica. (check)
 - **ReportLab**: Para geração de arquivos PDF.
